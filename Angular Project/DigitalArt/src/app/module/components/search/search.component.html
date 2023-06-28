@@ -1,0 +1,45 @@
+<div *ngIf="loading" class="spin">
+  <mat-spinner></mat-spinner>
+</div>
+<div class="search" *ngIf="!loading">
+  <div class="wrapper">
+    <div class="search_wrap search_wrap_1">
+      <div class="search_box">
+        <input type="text" class="input" placeholder="search..." [(ngModel)]="_searchValue">
+        <div class="btn btn_common material-icon" (click)="search()">
+          <i class="fas fa-search"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class=" table-responsive" infiniteScroll
+       [infiniteScrollDistance]="2"
+       [infiniteScrollThrottle]="50"
+       (scrolled)="onScrollDown()"
+       [scrollWindow]="false">
+    <table class="table table-trapped table-bordered">
+      <thead style="position: sticky;top: 0;z-index: 1">
+      <tr>
+        <th>Sl.No</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>TotalCollection</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let data of imageList; let i = index;"  (click)="collections(data,data.total_collection,data.image_id)">
+        <td>{{i+1}}</td>
+        <td>{{data.title}}</td>
+        <td [innerHTML]="data.description"></td>
+        <td>{{data.price}}</td>
+        <td>{{data.total_collection}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<button class="material-icons floating-btn" routerLink="/fileupload/">add</button>

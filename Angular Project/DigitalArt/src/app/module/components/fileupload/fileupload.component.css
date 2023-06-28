@@ -1,0 +1,220 @@
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.upload-box {
+  font-size: 13px;
+  background: white;
+  border-radius: 4px;
+  box-shadow: 5px 5px 10px black;
+  width: 400px;
+  outline: none;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+::-webkit-file-upload-button {
+  color: white;
+  background: dodgerblue;
+  padding: 20px;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 1px 0 1px #6b4559;
+  outline: none;
+  cursor:pointer;
+}
+::-webkit-file-upload-button:hover {
+  background: deepskyblue;
+}
+
+.upload{
+  color: white;
+  background: #009578;
+  padding: 20px;
+  border: none;
+  border-radius: 4px;
+  margin-left: 10px;
+  box-shadow: 1px 0 1px #6b4559;
+}
+
+.save {
+  color: white;
+  background: dodgerblue;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 1px 0 1px #6b4559;
+  margin-top: 10px;
+  width: 400px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+.save span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+.button:hover {
+  background: deepskyblue;
+}
+.save span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.save:hover span {
+  padding-right: 25px;
+
+}
+
+.save:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+#input {
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.file {
+  margin-inside: 20px;
+  margin-top: 40px;
+}
+
+
+*,
+*:focus{outline: none}
+
+.form{
+  width: 400px;
+  margin: auto;
+  margin-top: 10px;
+  background: #fff;
+}
+.form-item{
+  position: relative;
+  margin-bottom: 15px
+}
+
+.form-item input{
+  display: block;
+  width: 400px;
+  height: 50px;
+  background: transparent;
+  border: solid 1px grey;
+  transition: all .3s ease;
+  padding: 0 15px;
+}
+.form-item input:focus{
+  border-color: grey;
+}
+.form-item label{
+  position: absolute;
+  cursor: text;
+  z-index: 2;
+  top: 13px;
+  left: 10px;
+  font-size: 13px;
+  font-weight: bold;
+  background: #fff;
+  padding: 0 10px;
+  color: dodgerblue;
+  transition: all .3s ease
+}
+.form-item input:focus + label,
+.form-item input:valid + label{
+  font-size: 11px;
+  top: -5px
+}
+.form-item input:focus + label{
+  color: dodgerblue;
+}
+input[type="text"],input[type="number"]
+{
+  font-size:14px;
+  color:dimgrey;
+}
+
+/*Loader starts*/
+#load {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: dodgerblue;
+  border-bottom: dodgerblue;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  margin: 60px;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+/*progress bar*/
+
+.list {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+hr {
+  background-color: #D0D0D0;
+  height: 1px;
+}
+
+.line-linkage {
+  width: 93px;
+  border: 1px solid #a0a0a0;
+  position: relative;
+  top:16px;
+  left:70px;
+  z-index:0;
+}
+
+.line-over {
+  z-index: 200;
+}
+
+.trackProgress {
+  width: 100%;
+  margin-left: auto ;
+  margin-right: auto ;
+}
+.trackProgress ul {
+  list-style-type: none; /*to remove bullets*/
+  text-align: center;
+  padding: 0px;
+  zoom:1;
+  overflow: hidden;
+}
+.trackProgress li{
+  padding: 0px;
+  width: 120px;
+  display:inline-block;
+}
+
+/* numbered buttons */
+#status-buttons                 {  }
+#status-buttons ul              { margin-bottom: 0px; }
+#status-buttons a               { color:#808080; display:inline-block; font-size:12px; margin-right:10px; text-align:center; text-transform:uppercase; text-decoration: none ;}
+#status-buttons a:hover         { text-decoration:none; text-underline: none ;}
+#status-buttons a.active span   { background:#e74c3c; }
+/* we will style the span as the circled number */
+#status-buttons span            { color:#FFF; background:#A0A0A0; display:block; height:30px; margin:0 auto 10px; padding-top:7px; width:30px;
+  border-radius:50%; }
+
+/* active buttons turn light green-blue*/

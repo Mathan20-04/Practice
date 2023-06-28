@@ -1,0 +1,21 @@
+.header {
+  background-color:dodgerblue;
+  height: 50px;
+  width:100%;
+  padding: 12px;
+  display: flex;
+}
+
+#title{
+  color:#fff;
+  text-align: center;
+  margin-left: 600px;
+}
+
+#icon{
+  float: right;
+  font-size: 30px;
+  color:#fff;
+  margin-left: 6px;
+  cursor: pointer;
+}

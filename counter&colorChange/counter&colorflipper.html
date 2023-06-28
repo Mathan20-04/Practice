@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+        .align-center {
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            position: absolute;
+            margin: 0;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Color Flipper</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Simple</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Hex</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main>
+        <div class="text-center">
+            <h2>Counter</h2>
+            <h2 id="value">0</h2>
+            <button class="btn count decrease btn-danger">Decrease</button>
+            <button class="btn count reset btn-info">Reset</button>
+            <button class="btn count increase btn-success">Increase</button>
+        </div><br>
+        <div class="text-center">
+            <h2 class="">Background Color : "<span class="color"></span>"</h2>
+            <button class="btn btn-hero btn-info" id="btn">Click Me</button>
+        </div>
+    </main>
+    <script>
+        //color flipper
+        const colors = ["green", "red", "blue", "pink", "yellow", "orange", "grey"];
+        const hex = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"];
+        const btn = document.getElementById('btn');
+        const color = document.querySelector(".color");
+        // btn.addEventListener('click', () => {
+        //     const randomNumber = Math.floor(Math.random() * colors.length);
+        //     document.body.style.backgroundColor = colors[randomNumber];
+        //     color.textContent = colors[randomNumber];
+        // })
+        btn.addEventListener('click', () => {
+            let hexColor = "#";
+            for (let i = 0; i < 6; i++) {
+                hexColor += hex[Math.floor(Math.random() * hex.length)];
+            }
+            document.body.style.backgroundColor = hexColor;
+            color.textContent = hexColor;
+        });
+ 
+        //counter
+        let count = 0;
+        const value = document.getElementById('value');
+        const btns = document.querySelectorAll('.count');
+        btns.forEach(btn => {
+            btn.addEventListener("click", (e) => {
+                const methods = e.currentTarget.classList;
+                if (methods.contains("decrease")) {
+                    count--;
+                } else if (methods.contains("increase")) {
+                    count++;
+                } else {
+                    count = 0;
+                }
+                value.textContent = count;
+                if (count > 0)
+                    value.style.color = 'green';
+                if (count < 0)
+                    value.style.color = 'red';
+                if (count == 0)
+                    value.style.color = 'black';
+            })
+        });
+
+    </script>
+</body>
+
+</html>

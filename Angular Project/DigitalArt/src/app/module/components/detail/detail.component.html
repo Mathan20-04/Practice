@@ -1,0 +1,59 @@
+<div *ngIf="loading" class="spin">
+  <mat-spinner></mat-spinner>
+</div>
+<div class="row" *ngIf="!loading">
+  <div class="col-3 col-s-12 list">
+    <h6><b>Drag & Drop to Arrange the Parts</b></h6>
+      <div class="drag">
+        <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let part of data.parts" cdkDrag>
+            {{part.title}}
+            <img src="{{part.url}}" alt="" width="30px" height="30px">
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="col-6 col-s-9 image">
+    <img src={{data.url}} alt="EtherArt" class="image img" style="background-color: white;width: 100%;height: 550px;display: block"/>
+  </div>
+  <div class="col-3 col-s-12">
+    <div class="form">
+
+      <div class="form-item">
+        <input type="text" id="Title" autocomplete="off" [readOnly]="true" [(ngModel)]="data.title" [value]="data.title" >
+        <label for="Title">Title</label>
+      </div>
+
+      <div class="form-item">
+        <input type="text" id="description" autocomplete="off"  [readOnly]="true"  [(ngModel)]="data.description"  [value]="data.description" >
+        <label for="description">Description</label>
+      </div>
+
+      <div class="form-item">
+        <input type="text" id="metadata" autocomplete="off" [readOnly]="true"  [(ngModel)]="data.metadata" [value]="data.metadata" >
+        <label for="metadata">Metadata</label>
+      </div>
+
+      <div class="form-item">
+        <input type="text" id="price" autocomplete="off"  [readOnly]="true" [(ngModel)]="data.price" [value]="data.price" >
+        <label for="price">Price</label>
+      </div>
+
+      <div class="form-item">
+        <input type="text" id="width" autocomplete="off" [readOnly]="true" [(ngModel)]="data.width" [value]="data.width" >
+        <label for="width">Width</label>
+      </div>
+
+      <div class="form-item">
+        <input type="text" id="length" autocomplete="off" [readOnly]="true" [(ngModel)]="data.length" [value]="data.length" >
+        <label for="length">Length</label>
+      </div>
+
+      <div class="form-item">
+        <input type="number" id="numimg" autocomplete="off" [(ngModel)]="_numberOfImages" [value]="_numberOfImages" required>
+        <label for="numimg">Enter Number Of Images </label>
+      </div>
+      <button class="save button" (click)="Submit(); clicked = true;">Generate</button>
+    </div>
+  </div>
+</div>

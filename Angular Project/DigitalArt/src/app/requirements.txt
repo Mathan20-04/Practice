@@ -1,0 +1,24 @@
+
+/*
+  All the external libraries which are added to run this application are listed here.
+*/
+
+npm install crypto-js (v3.1.9-1) ( For encryption )
+npm install ngx-infinite-scroll (v8.0.0) ( For pagination )
+npm install ngx-image-compress (v8.0.3) ( For image compression )
+npm install @agm/core --save ( For GoogleMap )
+npm i ng-starrating ( For StarRating )
+npm install --save @ng-select/ng-select(Temporary CheckBox MultiSelect) //link-https://www.freakyjolly.com/angular-ngselect-with-single-multiple-and-search-filter-tutorial/
+npm install @kolkov/angular-editor --save(Temporary )
+ng update @angular/core
+npm install --save ckeditor4(Temporary)
+npm install ng-circle-progress --save(Progress Bar)
+
+npm install @asymmetrik/ngx-leaflet@5(Leaflet Temporary)
+npm i leaflet(leaflet Npm Temporary)
+npm install --save angular-tree-component(tree view sidemenu)
+npm install angular-google-charts (Map to show data in dashboard)
+npm i ng2-input-autocomplete
+npm install --save ng-click-outside  (for outside click in vault)
+
+

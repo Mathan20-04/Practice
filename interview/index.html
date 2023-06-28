@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    </link>
+</head>
+
+<body>
+    <!-- align center -->
+    <div class="align-center">
+        center
+    </div>
+    <script>
+        <!-- apply,call,bind -->
+        let name = { firstName: "Mathan", lastName: "V" }
+        let name2 = { firstName: "Raj", lastName: "Kiran" }
+
+        let fullName = function () {
+            console.log(this.firstName, this.lastName);
+        }
+
+        fullName.call(name);
+        fullName.call(name2);
+
+        let full = function (city, state) {
+            console.log(this.firstName, this.lastName, city, state);
+        }
+
+        //call() passing parameter comma seperated
+        full.call(name, "bangalore", "KA")
+
+        //apply() passing parameter in array
+        full.apply(name2, ["Chennai", "TN"])
+
+        //bind() just copying code and use it later
+        let fullIdentiy = full.bind(name2, "Kochin", "KL");
+
+        fullIdentiy();
+
+        // Array squared using map() function
+        const input = [1, 2, 3, 4, 5, 6];
+        let output = input.map(item => Math.pow(item, 2));
+        document.writeln("Array Squared");
+        document.writeln(output);
+
+        // Sum of every positive element
+        const arr = [1, -4, 12, 0, -3, 29, -150];
+        const positiveArr = arr.filter(item => item > 0)
+        console.log(positiveArr);
+        let sum = positiveArr.reduce((acc, cur) => acc + cur)
+        document.writeln("Sum of every positive");
+        document.writeln(sum);
+        console.log(sum)
+
+        // Calculate mean
+        const arr1 = [12, 46, 32, 64];
+        let a = arr1.sort();
+        let mean = arr1.reduce((acc, cur) => acc + cur) / arr1.length;
+        console.log(mean)//38.5
+
+        //Get name initials
+        const nameStr = "George Raymond Richard Martin";
+        console.log(nameStr.split(" ").map(item => item[0]).join(""));//GRRM
+
+        //Find a number of vowels in a string
+        const str = "vikram mudgal gururaj";
+        let vowels = ['a', 'e', 'i', 'o', 'u'];
+        let vowelsCount = 0;
+        function findVowelCount(str) {
+            for (let char of str) {
+                if (vowels.includes(char))
+                    vowelsCount++;
+            }
+            return vowelsCount;
+        }
+        console.log("vowel counts of", str, "is", findVowelCount(str));
+
+        //reverse string
+        function reverseStr(str) {
+            return str.split("").reverse().join("").split(" ").reverse().join(" ");
+        }
+
+        console.log(reverseStr("welcome to javascript"))
+
+        //reverse string
+        function reverse(string) {
+            let revStr = "";
+            for (let i = string.length - 1; i >= 0; i--) {
+                revStr += string[i];
+
+            }
+            return revStr;
+        }
+
+        console.log(reverse("word"))
+
+        // reverse an array
+        let oldArr = [23, 42, 534, 32, 53]
+        function reverseArr(arr) {
+            let newArr = [];
+            for (let i = arr.length - 1; i >= 0; i--) {
+                newArr.push(arr[i]);
+            }
+            return newArr;
+        }
+        console.log(reverseArr(oldArr));
+
+        //Unary Function
+        const unaryArr = (a) => console.log(a) // accepts exactly one argument
+
+        //Currying Function
+        const multiArgFunc = (a, b, c) => a + b + c; // accepts multiple arguments
+        multiArgFunc(1, 3, 5) //returns 9
+
+        //Pure Function is a function where the return value is only determined by its arguments without any side effects.
+        let numberArr = [];
+        const impureAddNumber = (number) => numberArr.push(number);
+        let pureAddNumber = (number) => (argNumerArr) =>
+            argNumerArr.concat([number]);
+        console.log(impureAddNumber(6)); // returns 1
+        // console.log(numberArray); // returns [6]
+        // console.log(pureAddNumber(7)(numberArray)); // returns [6, 7]
+        // console.log(numberArray); // returns [6]
+
+        // The let statement declares a block scope local variable
+        let counter = 90;
+        if (counter === 90) {
+            let counter = 80;
+            console.log(counter);
+        }
+        console.log(counter);
+
+        //Temporal Dead Zone is occurs accessing variable before declared with let or const (causes referenceError) but not with var (causes undefined)
+        function someMethod() {
+            // console.log(name1);//referenceError
+            // console.log(name2);//referenceError
+            // console.log(name3);//undefined
+            let name1 = "mathan";
+            const name2 = "raj"
+            var name3 = "hitesh";
+        }
+        someMethod();
+
+        //IIFE(Imediately Invoked Function Expression)
+        (function () { })();//signature;
+        (function () {
+            var message = "IIFE";
+            console.log(message)//IIFE
+        })();
+        // console.log(message)//Error : not defined
+
+        //setTimeout
+        function x() {
+            for (let i = 1; i <= 5; i++) {
+                setTimeout(() => {
+                    console.log(i);
+                }, i * 1000);
+            }
+        }
+        x();
+
+        //Find the frequency of elements in array (using Reduce method)
+        var words = ['hello', 'world', 'helloworld', 'world', 'welcome', 'javascipt', 'welcome'];
+        function wordCount(arr) {
+            let result = arr.reduce((acc, item) => {
+                if (acc[item])
+                    acc[item]++;
+                else
+                    acc[item] = 1;
+                return acc;
+            }, {})
+            return result;
+        }
+        console.log(wordCount(words));
+
+        //using an object
+        function frequencyWord(arr) {
+            var count = {};
+            arr.forEach(item => {
+                if (count[item])
+                    count[item]++;
+                else
+                    count[item] = 1;
+            });
+            return count;
+        }
+        console.log(frequencyWord(words));
+
+        // Remove duplicates from an array and return unique values in O(n) complexity
+        let numArr = [1, 3, 5, 2, 4, 3, 3, 5, 5, 5, 7, 8, 9, 1];
+        function uniqueArr(arr) {
+            let items = {};
+            arr.forEach(item => {
+                if (!items[item])
+                    items[item] = item;
+            })
+            return Object.values(items);
+        }
+        console.log(uniqueArr(numArr))
+
+        //Remove duplicates from an array using filter method
+        function removeDupEle(arr) {
+            return arr.filter((item, idx) => arr.indexOf(item) === idx);
+        }
+        console.log("unique arr", removeDupEle(numArr));
+        console.log(removeDupEle([1, 2, 4, 5, 3, 2, 2, 3, 3, 6, 6, 3, 7, 3, 8, 8]))
+
+        //Collect books from array of objects and return collection of books as an array
+        let friends = [
+            {
+                name: "Hindus",
+                books: ['Ramayan', 'Mahabharath', 'Bhagavad Gita']
+            },
+            {
+                name: "Horror",
+                books: ['Horry Potter', 'Magic Eye', 'Goose Bumps']
+            },
+            {
+                name: "Subjects",
+                books: ['Mathematics', 'Physics', 'Chemistry']
+            },
+        ];
+
+        let result = friends.reduce((acc, cur) => {
+            return [...acc, ...cur.books]
+        }, [])
+        console.log(result);
+
+        // Print all duplicate elements of an array
+        function removeDuplicates(arr) {
+            // console.log(numArr)
+            let result = arr.filter((item, idx) => {
+                // console.log(arr.indexOf(item), idx, arr.indexOf(item) !== idx)
+                return arr.indexOf(item) !== idx;
+            });
+            return result;
+        }
+        console.log(removeDuplicates(numArr))
+        document.cookie = "username=John";
+        document.cookie = "username=John; expires=Sat, 8 Jun 2019 12:00:00 UTC";
+        localStorage.setItem('name', "mathan");
+        console.log(localStorage.getItem('name'))
+        sessionStorage.setItem('name', "mathan");
+        console.log(sessionStorage.getItem('name'))
+        // Save data to sessionStorage
+        sessionStorage.setItem("key", "value");
+
+        // Get saved data from sessionStorage
+        let data = sessionStorage.getItem("key");
+        // Remove saved data from sessionStorage
+        // sessionStorage.removeItem("key");
+        // Remove all saved data from sessionStorage
+        // sessionStorage.clear();
+
+        //Call Back Function - It is a function passed into another function as an argument.
+        // This function is invoked inside the outer function to complete an action.
+        function callBackFunc(name) {
+            console.log("Welcome " + name);
+        }
+
+        function outerFunc(callBack) {
+            let data = "mathan"
+            callBack(data);
+        }
+        outerFunc(callBackFunc);
+        function firstFunction() {
+            // Simulate a code delay
+            setTimeout(function () {
+                console.log("First function called");
+            }, 1000);
+        }
+        function secondFunction() {
+            console.log("Second function called");
+        }
+        firstFunction();
+        secondFunction();
+        // Output;
+        // Second function called
+        // First function called
+        var user = { name: "John", age: 20 };
+        delete user.age;
+
+        console.log(user); // {name: "John"}
+
+        console.log(typeof "John Abraham"); // Returns "string"
+        console.log(typeof (1 + 2)); // Returns "number"
+        console.log(typeof [1, 2, 3]) // Returns "object" because all arrays are also objects
+        var item; // Value is undefined, type is undefined
+        console.log(typeof item); //undefined
+        item = null
+        console.log(typeof item); //object
+
+        // The eval() function evaluates JavaScript code represented as a string. The string can be a JavaScript
+        // expression, variable, statement, or sequence of statements.
+        console.log(eval("1 + 2")); // 3
+        console.log(isNaN("Hello")) //true
+        console.log(isNaN("100"))//false
+        var myName = (() => { console.log("hello") })();//IIFE
+        myName;
+
+        class Person {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+        }
+        const bob = new Person("mathan", 23)
+        console.log(typeof bob, bob);
+        localStorage.setItem("education", "MCA");
+
+        //Prototype for function
+        function Employee(name, age) {
+            this.name = name; this.age = age;
+        }
+        Employee.prototype.language = "English";
+        console.log(Employee)
+        let emp = new Employee('mathan', 'age')
+        console.log(emp)
+
+        //prototype for array
+        const list = [121, 122, 123, 123, 122];
+        Array.prototype.uniqueArr = [];
+        console.log(list)
+        let abc = 0;
+        if (a = 0) //return 0 value and 0 is stands for false
+            console.log(1);
+        else
+            console.log(2);
+        // output:2
+
+        let cba = 1;
+        if (b = 1) //return 1 value and 1 is stands for true
+            console.log(1);
+        else
+            console.log(2);
+        // output: 1
+
+        console.log('1' + -'2')//1-2
+        console.log('1' - +'2')//-1
+        console.log(1 + -'2');
+
+        //Anonymous Function
+        function mul(x) {
+            return function (y) { //anonymous function
+                return function (z) { //anonymous function
+                    return x * y * z;
+                }
+            }
+        }
+        console.log(mul(2)(3)(4));
+
+        function Apple(color, weight) {
+            this.color = color; this.weight = weight;
+        }
+        //Prototypes are the mechanism by which JavaScript objects inherit features from one another
+        Apple.prototype = {
+            eat: function () { return console.log('An Apple is ready to eat') },
+            name: "ooty"
+        }
+        apple1 = new Apple('red', 100);
+        apple2 = new Apple('green', 200);
+        console.log(apple1, apple2);
+        console.log(NaN == NaN) //false, never compare NaN with NaN
+        console.log(undefined == null) //true, both values are same
+        console.log(undefined === null) //false, both values are same but type is different type of undefined is
+        //undefined and type of null is object
+
+        console.log(undefined === undefined) //false, both values are same
+        console.log(null === null) //true, both values are same
+
+        // closure accessing variable in inner scope from outerscope
+        function create() {
+            var object = { name: 'Apple' }
+            return function () {
+                console.log("name", object);
+            }
+        }
+        var initialiseClosure = create();//create returns function
+        initialiseClosure();// calling the returning function
+        //hoisting accessing the variable before declaration
+        console.log(collection)
+        collection = 'colors'
+        console.log(collection)
+        var collection;
+
+        //callback function
+        function multiplyBy2(sum) {
+            console.log(sum * 2);
+        }
+        function operationOnSum(num1, num2, operation) {
+            var sum = num1 + num2;
+            operation(sum);
+        }
+        operationOnSum(2, 3, multiplyBy2)//10
+
+        // DOM (Document Object Model) is programming intergace for html and xml documents.
+
+        //Arrow Function
+        var add = function (a, b) {
+            return a + b;
+        }
+        var add = (a, b) => a + b;
+
+        //currying
+        function sumAdd(a) {
+            return function (b) {
+                return function (c) {
+                    return a + b + c;
+                }
+            }
+        }
+        let res = sumAdd(3)(4)(9);
+        console.log("Sum", res)
+
+        //Promise handles asynchronous operation resolve()->success and go to next action, reject()->fails and handle
+        //error;
+        function sumOfThreeNum(...elements) {
+            return new Promise((resolve, reject) => {
+                if (elements.length > 3) {
+                    reject('only three elements only allowed');
+                } else {
+                    let sum = 0;
+                    for (let i = 0; i < elements.length - 1; i++) { sum += elements[i]; } resolve("Sum of Three number : " + sum);
+                }
+            })
+        }
+        sumOfThreeNum(4, 5, 8)
+            .then(result => console.log(result))//then() method is used to access the result when the promise is fullfilled.
+            .catch(error => console.log(error));//promise() method is used to acceds
+        sumOfThreeNum(4, 5, 8, 9)
+            .then(result => console.log(result))
+            .catch(error => console.log(error));
+
+        //constructor
+        function Student(name, education, place, phone) {
+            this.name = name;
+            this.education = education;
+            this.place = place;
+            this.phone = phone;
+        }
+        Student.prototype.getDetails = function () {
+            return 'Name : ' + this.name + ' | Education : ' + this.education + ' | Place : ' + this.place + ' | Phone : ' + this.phone;
+        }
+        let Student1 = new Student('Mathan', 'MCA', 'Bangalore', '8220120296');
+        console.log(Student1.getDetails());
+
+        //Generator Function - they do not execute the code, instead, they return a generator object.
+        function* genFunc() {
+            yield 'mathan';
+            yield 3;
+        }
+        console.log(genFunc());
+        // next() method execute the genFun() and return object of value and done properties, value is represents yielded value, done is represents code finished or not
+        console.log(genFunc().next());
+
+        //WeakMap - map stores key-value pair it accepts any value to store,but weak map only accepts object else object will be garbage collected.
+        const map1 = new Map();
+        map1.set(3, 4, 'mathan')
+        console.log(map1);
+        const map2 = new WeakMap();
+        // map2.set('value', 2.3);//Throws an error
+        let obj = { name: " vivek" }; const map3 = new WeakMap(); map3.set(obj, { age: 23 }); console.log(map3);
+        //object destructuring is new way to extract element from object or array
+        const classDetails = {
+            strength:64,
+            benches:34
+        }
+        const {strength:classStrength, benches: classBenches} = classDetails;
+        console.log("Object Destructuring ->","strength:",classStrength,', benches:',classBenches)
+        //Array destructuring
+        const arrElements = [1,2,3,4,5];
+        const [first,second,third,fourth,fivth] = arrElements;
+        console.log("Array Destructuring -> ",first,second,third,fourth,fivth);
+        //spread operator (...)
+        console.log(...'apple')// a p p l e 
+        console.log(...arr1)// 12 32 46 64
+    </script>
+</body>
+
+</html>

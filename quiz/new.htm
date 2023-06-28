@@ -1,0 +1,228 @@
+<html>
+
+<head>
+    <title>Quiz App</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .quiz-container {
+            max-width: 500px;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #question-container {
+            margin-bottom: 20px;
+        }
+
+        #question-text {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        #answer-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 10px;
+        }
+
+        button {
+            height: 40px;
+            font-size: 16px;
+            background-color: #eaeaea;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #d2d2d2;
+        }
+
+        #controls-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #timer-container {
+            display: flex;
+            align-items: center;
+        }
+
+        #timer-text {
+            font-size: 14px;
+        }
+
+        #timer {
+            font-weight: bold;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="quiz-container">
+        <h1>Quiz App</h1>
+        <div id="question-container">
+            <p id="question-text"></p>
+            <div id="answer-buttons"></div>
+        </div>
+        <div id="controls-container">
+            <button id="start-button">Start Quiz</button>
+            <div id="timer-container">
+                <span id="timer-text">Time Left: <span id="timer">0</span></span>
+            </div>
+        </div>
+    </div>
+    <script>
+
+
+        // Define an array of quiz questions
+        const quizQuestions = [
+            {
+                question: "What is the capital of France?",
+                options: ["Paris", "London", "Berlin", "Rome"],
+                correctAnswer: "Paris"
+            },
+            {
+                question: "Which planet is known as the Red Planet?",
+                options: ["Venus", "Mars", "Jupiter", "Saturn"],
+                correctAnswer: "Mars"
+            },
+            {
+                question: "What is the chemical symbol for gold?",
+                options: ["Au", "Ag", "Cu", "Fe"],
+                correctAnswer: "Au"
+            }
+        ];
+
+        // Variables to track quiz state
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let timeLeft = 30;
+        let timerInterval;
+
+        // Function to start the quiz
+        function startQuiz() {
+            // Hide the start button and display the first question
+            document.getElementById("start-button").style.display = "none";
+            displayQuestion();
+            startTimer();
+        }
+
+        // Function to display a question and its options
+        function displayQuestion() {
+            const currentQuestion = quizQuestions[currentQuestionIndex];
+            const questionText = document.getElementById("question-text");
+            const answerButtons = document.getElementById("answer-buttons");
+
+            // Clear previous question and answer options
+            questionText.innerHTML = "";
+            answerButtons.innerHTML = "";
+
+            // Display the current question
+            questionText.innerHTML = currentQuestion.question;
+
+            // Create answer buttons for each option
+            currentQuestion.options.forEach(option => {
+                const button = document.createElement("button");
+                button.innerText = option;
+                button.classList.add("answer-button");
+                answerButtons.appendChild(button);
+
+                // Add click event listener to check the answer
+                button.addEventListener("click", function () {
+                    checkAnswer(option);
+                });
+            });
+        }
+
+        // Function to check the selected answer
+        function checkAnswer(selectedOption) {
+            const currentQuestion = quizQuestions[currentQuestionIndex];
+
+            // Check if the selected answer is correct
+            if (selectedOption === currentQuestion.correctAnswer) {
+                score++;
+            }
+
+            // Move to the next question or end the quiz if all questions are answered
+            currentQuestionIndex++;
+
+            if (currentQuestionIndex < quizQuestions.length) {
+                displayQuestion();
+            } else {
+                endQuiz();
+            }
+        }
+
+        // Function to start the timer
+        function startTimer() {
+            timerInterval = setInterval(function () {
+                timeLeft--;
+
+                // Update the timer text
+                document.getElementById("timer").textContent = timeLeft;
+
+                // End the quiz if time runs out
+                if (timeLeft <= 0) {
+                    endQuiz();
+                }
+            }, 1000);
+        }
+
+        // Function to end the quiz
+        function endQuiz() {
+            // Stop the timer
+            clearInterval(timerInterval);
+
+            // Calculate the score percentage
+            const scorePercentage = (score / quizQuestions.length) * 100;
+
+            // Display the final score
+            const questionContainer = document.getElementById("question-container");
+            questionContainer.innerHTML = `
+    <h2>Quiz Completed!</h2>
+    <p>Your Score: ${score} out of ${quizQuestions.length}</p>
+    <p>Score Percentage: ${scorePercentage}%</p>
+  `;
+        }
+
+        // Add event listener to start the quiz when the start button is clicked
+        document.getElementById("start-button").addEventListener("click", startQuiz);
+        const observable = rxjs.Observable.create(observer => {
+            console.log('Text inside an observable');
+            observer.next('Hello world!');
+            observer.complete();
+        });
+        console.log('Before subscribing an Observable');
+        observable.subscribe((message) => console.log(message));
+
+        const promise = new Promise((resolve, reject) => {
+            console.log('Text inside promise');
+            resolve('Hello world!');
+        });
+        console.log('Before calling then method on Promise');
+        greetingPoster.then(message => console.log(message));
+        //Text inside promise
+        // Before calling then method on Promise
+        // Hello world!
+    </script>
+</body>
+
+</html>

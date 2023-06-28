@@ -1,0 +1,207 @@
+.example-list {
+  width: 500px;
+  max-width: 100%;
+  border: solid 1px #ccc;
+  min-height: 40px;
+  display: block;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.example-box {
+  padding: 20px 10px;
+  border-bottom: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: move;
+  background: white;
+  font-size: 14px;
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+  0 8px 10px 1px rgba(0, 0, 0, 0.14),
+  0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.example-box:last-child {
+  border: none;
+}
+
+.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.drag {
+  height:520px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  width: 300px;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  /*border:solid 1px grey;*/
+  /*border-radius: 5px;*/
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin: auto;
+}
+* {
+  box-sizing: border-box;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+}
+/* For mobile phones: */
+[class*="col-"] {
+  width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  /* For tablets: */
+  .col-s-1 {width: 8.33%;}
+  .col-s-2 {width: 16.66%;}
+  .col-s-3 {width: 25%;}
+  .col-s-4 {width: 33.33%;}
+  .col-s-5 {width: 41.66%;}
+  .col-s-6 {width: 50%;}
+  .col-s-7 {width: 58.33%;}
+  .col-s-8 {width: 66.66%;}
+  .col-s-9 {width: 75%;}
+  .col-s-10 {width: 83.33%;}
+  .col-s-11 {width: 91.66%;}
+  .col-s-12 {width: 100%;}
+}
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+}
+
+#input {
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.file {
+  margin-inside: 20px;
+  margin-top: 40px;
+}
+
+
+*,
+*:focus{outline: none}
+
+.form{
+  width: 300px;
+  margin: auto;
+  margin-top: 10px;
+  background: #fff;
+}
+.form-item{
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.form-item input{
+  display: block;
+  width: 300px;
+  height: 50px;
+  background: transparent;
+  border: solid 1px dodgerblue;
+  transition: all .3s ease;
+  padding: 0 15px;
+}
+.form-item input:focus{
+  border-color: dodgerblue;
+}
+.form-item label{
+  position: absolute;
+  cursor: text;
+  z-index: 2;
+  top: 13px;
+  left: 10px;
+  font-size: 13px;
+  font-weight: bold;
+  background: #fff;
+  padding: 0 10px;
+  color: dodgerblue;
+  transition: all .3s ease;
+  top:-5px;
+}
+.form-item input:focus + label,
+.form-item input:valid + label{
+  font-size: 11px;
+}
+.form-item input:focus + label{
+  color: dodgerblue;
+}
+input[type="text"],input[type="number"]
+{
+  font-size:14px;
+  color:dimgrey;
+}
+
+.save {
+  color: white;
+  background: dodgerblue;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 1px 0 1px #6b4559;
+  margin-top: 10px;
+  width: 300px;
+}
+.list {
+  text-align: center;
+}
+.image {
+  margin: auto;
+  /*border-style: groove;*/
+}
+.img {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  /*width: 150px;*/
+}
+h6 {
+  color:dodgerblue;
+}
+
+.button:hover {
+  background:deepskyblue ;
+}
