@@ -479,6 +479,24 @@
         //spread operator (...)
         console.log(...'apple')// a p p l e 
         console.log(...arr1)// 12 32 46 64
+
+        //find non repeating character
+        function nonRepeat(str) {
+            const charCount = {};
+            for(let i=0;i<str.length-1;i++){
+                
+            }
+            str.toArray.forEach(item=>{
+                charCount[item]=charCount[item]?charCount[item]+1:1;
+            });
+            str.forEach(item=>{
+                if(charCount[item]==1) {
+                    return item;
+                }
+            })
+            return null;
+        }
+        console.log(nonRepeat('mathan'));
     </script>
 </body>
 
